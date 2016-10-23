@@ -72,13 +72,17 @@ game.prototype = {
         this.physics.enable(mavis.sprite, Phaser.Physics.ARCADE);
         mavis.sprite.body.setSize(30, 50, 5, 5)
 
-        backgroundMusic = this.add.sound('backgroundMusic', 0.4 , true);
+        backgroundMusic = this.add.sound('backgroundMusic', 0.3, true);
         backgroundMusic.play();
         trunks = [trunkLeft1, trunkRight1, trunkLeft2, trunkRight2, trunkLeft3, trunkRight3, trunkLeft4, trunkRight4];    
         trunksIncrement = 2;
         incrementAdd = false;
 
-        textScore = main.add.text(10, 10, '0', { fill: '#ffffff' });        
+        walkSfx = this.add.sound('walkSfx', 0.3, true);
+        loseSfx = this.add.sound('loseSfx', 0.4, false);
+
+        hud = this.add.sprite(10, 10, 'hud');
+        textScore = main.add.text(53, 27.5, '0', { fill: '#000', fontSize : '18px'});        
     },
     'update' : function() { // Game loop
         if(mavis.dead){
@@ -119,6 +123,7 @@ game.prototype = {
             if (!mavis.spaceDown) {
                 mavis.spaceDown = true;// Set the first frame animation to walking
                 mavis.sprite.frame = 0;    
+                walkSfx.play();
             }
             mavis.sprite.animations.play('walk', 10, true) // Start the animation walk
 
@@ -158,6 +163,7 @@ game.prototype = {
             mavis.sprite.animations.stop('walk');
             mavis.spaceDown = false;
             mavis.sprite.frame = 1;
+            walkSfx.stop();
         }
 
         textScore.setText(mavis.bones);
@@ -176,8 +182,10 @@ game.prototype = {
         if(mavis.dead){
             mavis.sprite.animations.stop('walk');
             backgroundMusic.stop()
+            walkSfx.stop();
             mavis.sprite.frame = 2;
             youDied = this.add.sprite(153, 250, 'youDied');
+            loseSfx.play();
         }
 
     },

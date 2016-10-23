@@ -19,8 +19,11 @@ preload.prototype =  {
         this.load.image('trunkLeft', 'assets/images/game/trunkL.png');
         this.load.image('trunkRight', 'assets/images/game/trunkR.png');
         this.load.image('youDied', 'assets/images/game/you-died.png');
+        this.load.image('hud', 'assets/images/game/hud.png');
         this.load.spritesheet('mavis', 'assets/images/game/mavis.png', 40, 60, 3);
         this.load.audio('backgroundMusic', 'assets/musics/pixel_peeker_polka.mp3');        
+        this.load.audio('walkSfx', 'assets/sfx/walk.wav');        
+        this.load.audio('loseSfx', 'assets/sfx/lose.wav');        
     },
     'loadStart' : function(){
         main.stage.backgroundColor = '#1e5915'; 
