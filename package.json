@@ -2,9 +2,6 @@
   "name": "run-mavis-run",
   "version": "0.0.1",
   "gh-pages-deploy": {
-    "staticpath": "src",
-    "prep": [
-    ],
     "post": [
       "clean-source"
     ],
