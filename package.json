@@ -6,7 +6,6 @@
     "prep": [
     ],
     "post": [
-      "install-prod",
       "clean-source"
     ],
     "noprompt": false
@@ -15,8 +14,7 @@
     "start": "npm run lite",
     "lite": "lite-server",
     "deploy": "gh-pages-deploy",
-    "install-prod": "rm -rf node_modules && npm install --production",
-    "clean-source": "rm -rf package.json psd src README.md"
+    "clean-source": "rm -rf package.json psd src .gitignore node_modules README.md .DS_Store && npm install --production"
   },
   "devDependencies": {
     "concurrently": "^3.0.0",
