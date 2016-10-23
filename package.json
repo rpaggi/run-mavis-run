@@ -1,0 +1,24 @@
+{
+  "name": "run-mavis-run",
+  "version": "0.0.1",
+  "gh-pages-deploy": {
+    "post": [
+      "clean-source"
+    ],
+    "noprompt": false
+  },
+  "scripts": {
+    "start": "npm run lite",
+    "lite": "lite-server",
+    "deploy": "gh-pages-deploy",
+    "clean-source": "rm -rf package.json psd src .gitignore node_modules README.md .DS_Store && npm install --production"
+  },
+  "devDependencies": {
+    "concurrently": "^3.0.0",
+    "gh-pages-deploy": "^0.4.2",
+    "lite-server": "^2.2.2"
+  },
+  "dependencies": {
+    "phaser": "~2.6.2"
+  }
+}
