@@ -16,8 +16,7 @@
     "lite": "lite-server",
     "deploy": "gh-pages-deploy",
     "install-prod": "rm -rf node_modules && npm install --production",
-    "clean-source": "rm -rf package.json psd src README.md",
-    "install-dev" : "npm install && mv node_modules src/node_modules"
+    "clean-source": "rm -rf package.json psd src README.md"
   },
   "devDependencies": {
     "concurrently": "^3.0.0",
