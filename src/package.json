@@ -3,11 +3,10 @@
   "version": "0.0.1",
   "gh-pages-deploy": {
     "prep": [
-      "install-prod"
     ],
     "post": [
-      "clean-source",
-      "install-dev"
+      "install-prod",
+      "clean-source"
     ],
     "noprompt": false
   },
@@ -16,8 +15,7 @@
     "lite": "lite-server",
     "deploy": "gh-pages-deploy",
     "install-prod" : "rm -rf node_modules && npm install --production",
-    "clean-source": "rm -rf package.json psd",
-    "install-dev" : "npm install"
+    "clean-source": "rm -rf package.json psd"
   },
   "devDependencies": {
     "concurrently": "^3.0.0",
