@@ -6,6 +6,7 @@ var main = new Phaser.Game(
 	'Run-Mavis-Run'
 );
 
+main.state.add('preload', preload);
 main.state.add('menu', menu);
 main.state.add('game', game);
-main.state.start('menu')
+main.state.start('preload')
