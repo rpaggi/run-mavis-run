@@ -5,8 +5,7 @@
     "staticpath": "dist",
     "cname": "nope.org",
     "prep": [
-      "build-sass",
-      "optimize-img"
+      "install-prod"
     ],
     "post": [
       "clean-source"
@@ -17,7 +16,8 @@
     "start": "npm run lite",
     "lite": "lite-server",
     "deploy": "gh-pages-deploy",
-    "clean-source": "package.json .gitignore psd node_modules"
+    "install-prod" : "rm -rf node_modules && npm install --production",
+    "clean-source": "rm -rf package.json psd"
   },
   "devDependencies": {
     "concurrently": "^3.0.0",
