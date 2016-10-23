@@ -6,7 +6,8 @@
       "install-prod"
     ],
     "post": [
-      "clean-source"
+      "clean-source",
+      "install-dev"
     ],
     "noprompt": false
   },
@@ -15,7 +16,8 @@
     "lite": "lite-server",
     "deploy": "gh-pages-deploy",
     "install-prod" : "rm -rf node_modules && npm install --production",
-    "clean-source": "rm -rf package.json psd"
+    "clean-source": "rm -rf package.json psd",
+    "install-dev" : "npm install"
   },
   "devDependencies": {
     "concurrently": "^3.0.0",
