@@ -3,6 +3,10 @@
 This game is made to the challenge of Biznas on the Vanhackton
 Oct 21st - Oct 23rd, 2016
 
+## Controls ##
+
+![http://i.imgur.com/d76ef2N.png](Space bar) -  Walk and run
+
 ## Objective ##
 Write a simple browser-based graphical computer game of your choice such as pong or space invaders in HTML5 and JavaScript. You may use either plain JavaScript or any libraries of your choice. 
  
