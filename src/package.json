@@ -2,6 +2,7 @@
   "name": "run-mavis-run",
   "version": "0.0.1",
   "gh-pages-deploy": {
+    "staticpath": "src",
     "prep": [
     ],
     "post": [
@@ -15,7 +16,7 @@
     "lite": "lite-server",
     "deploy": "gh-pages-deploy",
     "install-prod" : "rm -rf node_modules && npm install --production",
-    "clean-source": "rm -rf package.json psd"
+    "clean-source": "rm -rf package.json psd README.md"
   },
   "devDependencies": {
     "concurrently": "^3.0.0",
