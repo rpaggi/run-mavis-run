@@ -1,9 +1,23 @@
 {
   "name": "run-mavis-run",
   "version": "0.0.1",
+  "gh-pages-deploy": {
+    "staticpath": "dist",
+    "cname": "nope.org",
+    "prep": [
+      "build-sass",
+      "optimize-img"
+    ],
+    "post": [
+      "clean-source"
+    ],
+    "noprompt": false
+  },
   "scripts": {
     "start": "npm run lite",
-    "lite": "lite-server"
+    "lite": "lite-server",
+    "deploy": "gh-pages-deploy",
+    "clean-source": "package.json .gitignore psd node_modules"
   },
   "devDependencies": {
     "concurrently": "^3.0.0",

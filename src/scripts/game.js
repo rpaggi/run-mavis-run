@@ -13,46 +13,46 @@ game.prototype = {
         grass2 = this.add.sprite(0, -600, 'bgGrass');
 
         trunkLeft1 = this.add.sprite(0, 400, 'trunkLeft');
-        trunkLeft1.sense = 1
-        trunkLeft1.side = 'L'
+        trunkLeft1.sense = 1;
+        trunkLeft1.side = 'L';
         trunkLeft1.scored = false;
         this.physics.enable(trunkLeft1, Phaser.Physics.ARCADE);        
         trunkRight1 = this.add.sprite(508, 400, 'trunkRight');
-        trunkRight1.sense = 1
-        trunkRight1.side = 'R'
+        trunkRight1.sense = 1;
+        trunkRight1.side = 'R';
         trunkRight1.scored = false;
         this.physics.enable(trunkRight1, Phaser.Physics.ARCADE);   
 
-        trunkLeft2 = this.add.sprite(0, 200, 'trunkLeft');
-        trunkLeft2.sense = 1
-        trunkLeft2.side = 'L'
+        trunkLeft2 = this.add.sprite(110, 200, 'trunkLeft');
+        trunkLeft2.sense = 0;
+        trunkLeft2.side = 'L';
         trunkLeft2.scored = false;
         this.physics.enable(trunkLeft2, Phaser.Physics.ARCADE);        
-        trunkRight2 = this.add.sprite(508, 200, 'trunkRight');
-        trunkRight2.sense = 1
-        trunkRight2.side = 'R'
+        trunkRight2 = this.add.sprite(398, 200, 'trunkRight');
+        trunkRight2.sense = 0;
+        trunkRight2.side = 'R';
         trunkRight2.scored = false;
         this.physics.enable(trunkRight2, Phaser.Physics.ARCADE); 
 
         trunkLeft3 = this.add.sprite(0, 0, 'trunkLeft');
-        trunkLeft3.sense = 1
-        trunkLeft3.side = 'L'
+        trunkLeft3.sense = 1;
+        trunkLeft3.side = 'L';
         trunkLeft3.scored = false;
         this.physics.enable(trunkLeft3, Phaser.Physics.ARCADE);        
         trunkRight3 = this.add.sprite(508, 0, 'trunkRight');
-        trunkRight3.sense = 1
-        trunkRight3.side = 'R'
+        trunkRight3.sense = 1;
+        trunkRight3.side = 'R';
         trunkRight3.scored = false;
         this.physics.enable(trunkRight3, Phaser.Physics.ARCADE);   
 
-        trunkLeft4 = this.add.sprite(0, -200, 'trunkLeft');
-        trunkLeft4.sense = 1
-        trunkLeft4.side = 'L'
+        trunkLeft4 = this.add.sprite(110, -200, 'trunkLeft');
+        trunkLeft4.sense = 0;
+        trunkLeft4.side = 'L';
         trunkLeft4.scored = false;
         this.physics.enable(trunkLeft4, Phaser.Physics.ARCADE);        
-        trunkRight4 = this.add.sprite(508, -200, 'trunkRight');
-        trunkRight4.sense = 1
-        trunkRight4.side = 'R'
+        trunkRight4 = this.add.sprite(398, -200, 'trunkRight');
+        trunkRight4.sense = 0;
+        trunkRight4.side = 'R';
         trunkRight4.scored = false;
         this.physics.enable(trunkRight4, Phaser.Physics.ARCADE);  
 
@@ -70,12 +70,15 @@ game.prototype = {
         mavis.sprite.animations.add('walk', [0,1]);
         mavis.sprite.frame = 1;
         this.physics.enable(mavis.sprite, Phaser.Physics.ARCADE);
-        mavis.sprite.body.collideWorldBounds = true;
+        mavis.sprite.body.setSize(30, 50, 5, 5)
 
         backgroundMusic = this.add.sound('backgroundMusic', 0.4 , true);
         backgroundMusic.play();
         trunks = [trunkLeft1, trunkRight1, trunkLeft2, trunkRight2, trunkLeft3, trunkRight3, trunkLeft4, trunkRight4];    
         trunksIncrement = 2;
+        incrementAdd = false;
+
+        textScore = main.add.text(10, 10, '0', { fill: '#ffffff' });        
     },
     'update' : function() { // Game loop
         if(mavis.dead){
@@ -130,11 +133,12 @@ game.prototype = {
                 trunks[i+1].y = trunks[i].y += 10;
                 if(i%2 == 0 && trunks[i].y > 560 && !trunks[i].scored){
                     mavis.bones += 1;
-                    trunks[i].scored = true
+                    trunks[i].scored = true;
+                    incrementAdd = true;
                 }
 
                 if(trunks[i].y > 600){
-                    random = (Math.random() * (121 - 11)) * -1;
+                    random = (Math.random() * (51 - 31)) * -1;
                     trunks[i+1].y = trunks[i].y = -200 + random;
                     trunks[i].scored = false;
                 }
@@ -156,6 +160,13 @@ game.prototype = {
             mavis.sprite.frame = 1;
         }
 
+        textScore.setText(mavis.bones);
+
+        if(mavis.bones%10 == 0 && incrementAdd){
+            trunksIncrement += 0.5;
+            incrementAdd = false;
+        }
+
         for (var i=0;i<trunks.length;i++){ 
             if(this.physics.arcade.collide(mavis.sprite, trunks[i])){
                 mavis.dead = true;
@@ -166,10 +177,18 @@ game.prototype = {
             mavis.sprite.animations.stop('walk');
             backgroundMusic.stop()
             mavis.sprite.frame = 2;
+            youDied = this.add.sprite(153, 250, 'youDied');
         }
 
     },
     'dead' : function(){
+        if ( mavis.sprite.y > -100 )
+            mavis.sprite.y  -= 10;
         
+        if (this.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && !mavis.spaceDown) {
+            this.state.start('game');
+        } else if(!this.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) {
+            mavis.spaceDown = false;
+        }
     }
 }
