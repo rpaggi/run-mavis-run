@@ -12,7 +12,7 @@
     "noprompt": false
   },
   "scripts": {
-    "start": "cd src && npm run lite",
+    "start": "npm run lite",
     "lite": "lite-server",
     "deploy": "gh-pages-deploy",
     "install-prod": "rm -rf node_modules && npm install --production",
