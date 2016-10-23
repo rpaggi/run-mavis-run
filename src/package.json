@@ -3,8 +3,7 @@
   "version": "0.0.1",
   "gh-pages-deploy": {
     "staticpath": "src",
-    "prep": [
-    ],
+    "prep": [],
     "post": [
       "install-prod",
       "clean-source"
@@ -15,11 +14,12 @@
     "start": "npm run lite",
     "lite": "lite-server",
     "deploy": "gh-pages-deploy",
-    "install-prod" : "rm -rf node_modules && npm install --production",
+    "install-prod": "rm -rf node_modules && npm install --production",
     "clean-source": "rm -rf package.json psd README.md"
   },
   "devDependencies": {
     "concurrently": "^3.0.0",
+    "gh-pages-deploy": "^0.4.2",
     "lite-server": "^2.2.2"
   },
   "dependencies": {
