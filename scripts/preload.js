@@ -11,7 +11,7 @@ preload.prototype =  {
         //Loading Menu assets
         this.load.spritesheet('bgMenu', 'assets/images/menu/bg.jpg', 800, 600, 2);
         this.load.spritesheet('btnStart', 'assets/images/menu/start-button.png', 460, 47, 2);
-        this.load.audio('bgMusic', 'assets/musics/take_a_chance.mp3');        
+        this.load.audio('bgMusic', ['assets/musics/take_a_chance.mp3', 'assets/musics/take_a_chance.ogg']);        
 
         //Loading Game assets
         this.load.image('bgGame', 'assets/images/game/gameBg.jpg');
@@ -21,9 +21,9 @@ preload.prototype =  {
         this.load.image('youDied', 'assets/images/game/you-died.png');
         this.load.image('hud', 'assets/images/game/hud.png');
         this.load.spritesheet('mavis', 'assets/images/game/mavis.png', 40, 60, 3);
-        this.load.audio('backgroundMusic', 'assets/musics/pixel_peeker_polka.mp3');        
-        this.load.audio('walkSfx', 'assets/sfx/walk.wav');        
-        this.load.audio('loseSfx', 'assets/sfx/lose.wav');        
+        this.load.audio('backgroundMusic', ['assets/musics/pixel_peeker_polka.mp3', 'assets/musics/pixel_peeker_polka.ogg']);        
+        this.load.audio('walkSfx', ['assets/sfx/walk.wav', 'assets/sfx/walk.ogg']);        
+        this.load.audio('loseSfx', ['assets/sfx/lose.wav', 'assets/sfx/lose.ogg']);        
     },
     'loadStart' : function(){
         main.stage.backgroundColor = '#1e5915'; 
